@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Публикации{% endblock title%}
+
+{% block content %}
+
+{% block search %}
+<div class="search-section">
+    <div class="search-block">
+        <input type="text" name="search-conference" placeholder="Я хочу найти статью">
+    </div>
+</div>
+{% endblock search%}
+
+{% block view %}
+<div class="view-section margin-top-bottom">
+    <div class="view-grid">
+        {% for article in articles %}
+        <div class="card">
+            <div class="image-block">
+                <div class="div-img">
+                    <img src="{{article.image.url}}">
+                </div>
+            </div>
+            <div class="content">
+                <div class="div-h3">
+                    <a href='/articles/article/{{article.id}}' style="color:black">
+                        <h3>{{article.title}}</h3>
+                    </a>
+                </div>
+                <div class="div-h3">
+                    <a style="color:black">
+                        <h3>{{author.user.username}}</h3>
+                    </a>
+                </div>
+                <div class="div-p">
+                    <p>{{article.about}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock view %}
+
+{% endblock content %}

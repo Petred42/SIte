@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Удалить мероприятие{% endblock title%}
+
+{% block content %}
+<h3 class="u-text u-text-default u-text-1">Вы уверены что хотите удалить следующее мероприятие:</h3>
+<h4>{{ event.name }}</h4>
+<div class="image-block">
+                <div class="image">
+                    <img src="{{event.image.url}}">
+                </div>
+            </div>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="button-block">
+    <div class="button">
+      <input type="submit" value="Удалить">
+    </div>
+  </div>
+</form>
+<a href="/events" class="u-border-none u-btn u-btn-round u-button-style u-grey-90 u-hover-grey-75 u-radius-50 u-btn-1">Отмена</a>
+{% endblock content %}

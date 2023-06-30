@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/test.css' %}" />
+
+{% block title %}Главная{% endblock title%}
+
+{% block content %}
+
+{% block welcome-banner %}
+<div class="welcome-section blue-background margin-top-bottom">
+    <div class="welcome-left-column">
+        <div class="welcome-content">
+            <div class="div-h2 white-text">
+                <h2>{{welcome_h2}}</h2>
+            </div>
+            <div class="div-p white-text over-text">
+                <p>{{welcome_about}}</p>
+            </div>
+            {% if user.is_authenticated == False %}
+            <div class="div-button">
+                <div class="button">
+                    <div class="div-a">
+                        <a href="log_in">Вход</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="welcome-right-column">
+        <div class="welcome-banner">
+            <img src="{% static 'image/welcome-banner.svg' %}">
+        </div>
+    </div>
+</div>
+{% endblock welcome-banner %}
+
+{% block 3-last-conference%}
+<div class="board-card-section margin-top-bottom">
+    <div class="div-header ">
+        <div class="div-h2">
+            <h2>{{conference_h2}}</h2>
+        </div>
+        <div class="div-a upper">
+            <a href="/events">{{conference_a}}</a>
+        </div>
+    </div>
+    <div class="board margin-top-bottom">
+        {% for event in events %}
+        <div class="card">
+            <div class="image-block">
+                <div class="div-img">
+                    <img src='{{event.image.url}}'>
+                </div>
+            </div>
+            <div class="content">
+                <div class="div-h3">
+                    <h3><a href='/events/event/{{event.id}}' style="color:black">{{event.name}}</a></h3>
+                </div>
+                <div class="div-p">
+                    <p>{{event.about}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock 3-last-conference %}
+
+{% block 3-last-article %}
+{% endblock 3-last-article %}
+
+{% endblock content %}

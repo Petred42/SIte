@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock title%}</title>
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
+</head>
+<body>
+<div class="page">
+    {% include "menu.html"%}
+{% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+</div>
+</body>
+</html>

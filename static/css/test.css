@@ -1,0 +1,557 @@
+/* Используемые шрифты */
+/* Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+/* Стиль базовых элементов */
+/* Стиль тела */
+body{
+width: auto;
+height: 100%;
+font-family: 'Roboto', sans-serif;
+}
+/* Заголовочные тэги */
+/* h1 */
+h1{
+font-family: inherit;
+font-size: 76px;
+margin: 0px;
+padding: 0px;
+}
+/* h2 */
+h2{
+font-family: inherit;
+font-size: 47px;
+margin: 0px;
+padding: 0px;
+}
+/* h3 */
+h3{
+font-family: inherit;
+font-size: 29px;
+margin: 0px;
+padding: 0px;
+}
+/* h4 */
+h4{
+font-family: inherit;
+font-size: 18px;
+margin: 0px;
+padding: 0px;
+}
+/* Тег обычного текста */
+p{
+font-family: inherit;
+font-size: 18px;
+margin: 0px;
+padding: 0px;
+}
+/* Ссылочный тэг */
+a{
+font-family: inherit;
+font-size: 18px;
+color: #005AAA;
+text-decoration: none;
+margin: 0px;
+padding: 0px;
+}
+a:hover {
+color: #005AAA;
+text-decoration: underline;
+}
+/* Тэг ввода информации */
+input{
+font-family: inherit;
+font-size: 18px;
+margin: 0px;
+padding: 0px;
+}
+/* Тег изображения */
+img{
+margin: 0px;
+padding: 0px;
+}
+
+/* Стили блоков-обёрток базовых тегов */
+/* h1 */
+.div-h1{
+font-family: inherit;
+font-size: inherit;
+}
+/* h2 */
+.div-h2{
+font-family: inherit;
+font-size: inherit;
+}
+/* h3 */
+.div-h3{
+font-family: inherit;
+font-size: inherit;
+}
+/* h4 */
+.div-h4{
+font-family: inherit;
+font-size: inherit;
+}
+/* p */
+.div-p{
+font-family: inherit;
+font-size: inherit;
+}
+/* a */
+.div-a{
+font-family: inherit;
+font-size: inherit;
+}
+/* img */
+div-img{
+font-family: inherit;
+font-size: inherit;
+}
+/* input */
+div-input{
+font-family: inherit;
+font-size: inherit;
+background-color: transparent;
+}
+
+/* Стили элементов страниц */
+/* Базовая */
+.page{
+width: 90%;
+margin-left:auto;
+margin-right:auto;
+}
+/* Меню */
+.menu{
+max-height: 72px;
+display: grid;
+grid-template-columns: 1fr 2fr 1fr;
+align-items: center;
+justify-content: stretch;
+}
+.margin-top-bottom{
+margin-top: 20px;
+margin-bottom: 20px;
+}
+.logo{
+max-height: 70px;
+}
+.nav-block{
+display: grid;
+grid-template-columns: max-content max-content max-content;
+justify-content: space-around;
+}
+.enter-nav a{
+color: #000000;
+}
+.enter-nav{
+display: grid;
+grid-template-columns: max-content max-content;
+justify-content: center;
+column-gap: 20px;
+}
+.enter-img{}
+/* Главная */
+/* Базовая информация */
+.welcome-section{
+width:100%;
+height: 396px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+.blue-background{
+background:  #005AAA;
+}
+.welcome-left-column{
+width:100%;
+height: 100%;
+display:flex;
+justify-content: center;
+align-items:center;
+}
+.welcome-content{
+width:476px;
+height:100%;
+display: grid;
+grid-template-rows: 1fr 1fr 1fr;
+justify-content: center;
+align-content:center;
+}
+.welcome-content > .div-h2{
+display:flex;
+justify-content: start;
+align-items:center;
+}
+.welcome-content > .div-p{
+display:flex;
+justify-content: start;
+align-items:center;
+}
+.white-text h2,p{
+color: #FFFFFF;
+}
+.welcome-content > .div-button{
+display:flex;
+justify-content: start;
+align-items:center;
+}
+.over-text{
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.button{
+width:150px;
+height:50px;
+display:flex;
+justify-content: center;
+align-items:center;
+border: 3px solid #005AAA;
+border-radius: 30px 3px;
+background:#FFFFFF
+}
+.welcome-right-column{
+width:100%;
+height: 100%;
+}
+.welcome-banner{
+width:100%;
+height: 100%;
+display: flex;
+justify-content:center;
+align-items: center;
+}
+.welcome-banner img{
+width:100%;
+height: 100%;
+}
+/* Три последние мероприятия или статьи */
+.board-card-section{}
+/* Заголовок блока */
+.div-header{
+width:100%;
+height:auto;
+display:grid;
+grid-template-columns: repeat(2, maxmin(max-content, 1fr));
+justyfy-content: start;
+align-items: end;
+grid-auto-flow: column;
+border-bottom: 3px solid #005AAA;
+}
+.div-header > .div-a{
+justify-self: end;
+}
+.upper a{
+text-transform: uppercase;
+}
+/* Доска карточек */
+.board{
+width:100%
+height:100%;
+display: grid;
+grid-tempalte-columns: repeat(3, 1fr);
+column-gap: 20px;
+justify-content: center;
+align-items: start;
+grid-auto-flow: column;
+}
+/* Карточка */
+.card{
+width: 400px;
+height: 522px;
+display:grid;
+grid-template: minmax(max-content, 242px) auto / 1fr;
+justify-content: start;
+align-items: start;
+border: 3px solid #005AAA;
+border-radius: 50px 5px;
+}
+.card p{
+color: #000000;
+}
+/* Блок изображения */
+
+/* Блок текста */
+.content{
+width: 100%;
+height: 100%;
+dispaly:grid;
+grid-template-rows: max-content auto;
+justify-content:center;
+align-items: start;
+}
+
+/* Вход */
+.dialog-section{
+width: 424px;
+height: 484px;
+border: 1px solid rgba(0, 0, 0, 0.31);
+border-radius: 10px;
+margin-left:auto;
+margin-right:auto;
+display: flex;
+align-items: center;
+}
+.enter-section{
+width: 100%;
+height: 90%;
+display: grid;
+grid-template-rows: auto max-content;
+gap: 20px;
+}
+.enter-block{
+display: grid;
+grid-template-rows: max-content auto;
+grid-auto-flow:row;
+justify-content: strech;
+align-content: strech;
+gap: 20px;
+}
+.enter-block > .div-h2{
+justify-self: center;
+}
+.bottom-line{
+border-bottom: 2px solid rgba(0, 0, 0, 0.30);
+}
+/* Блок формы */
+.form-block{}
+.div-form{
+width: 100%;
+height: 100%;
+}
+.div-form form{
+width: 100%;
+height: 100%;
+display: grid;
+grid-template-rows: 2fr 1fr;
+align-items: center;
+justify-content: strech;
+}
+.row-input{
+display: grid;
+grid-template-rows: max-content max-content;
+grid-auto-flow: row;
+justify-content: stretch;
+row-gap: 30px;
+}
+.row-input > .div-input{
+width: 100%;
+height: 40px;
+}
+.row-input > .div-input input{
+background: rgba(217, 217, 217, 0.26);
+border-radius: 10px;
+border-color: rgba(217, 217, 217, 0.26);
+height: 100%;
+width: 95%;
+}
+.div-input{
+display: grid;
+grid-template-columns: 1fr 5fr;
+gap: 20px;
+}
+.div-input-lable{
+width: 100%;
+height: 100%;
+margin-left:10px;
+display: flex;
+justify-content: end;
+align-items: center;
+}
+.div-input-area{
+width: 100%;
+height: 100%;
+}
+/* Блок кнопки */
+.button-block{
+display: flex;
+justify-content: center;
+}
+.button input{
+background: #FFFFFF;
+border: 0;
+}
+.registration-button input{
+background: #FFFFFF;
+border: 0;
+}
+.button input:hover{
+color: #005AAA;
+text-decoration: underline;
+}
+.registration-button input:hover{
+color: #005AAA;
+text-decoration: underline;
+}
+/* Футтер блока */
+.info-block{
+display: grid;
+grid-template-columns: max-content max-content;
+justify-content: center;
+align-items: start;
+gap: 10px;
+}
+.info-block > .div-p p{
+color: black;
+}
+
+/* Выход */
+
+/* Регистрация */
+/* Блок кнопки */
+.registration-button {
+width: 225px;
+height:50px;
+display:flex;
+justify-content: center;
+align-items:center;
+border: 3px solid #005AAA;
+border-radius: 30px 3px;
+background:#FFFFFF
+}
+/* Удаление статьи */
+
+/* Редактирование статьи */
+
+/* Загрузить статью */
+
+/* Статья */
+/* Основная информация */
+.info{
+width: 100%;
+display: grid;
+grid-template-columns: 3fr 2fr;
+justify-content: start;
+align-items: start;
+overflow: hidden;
+}
+.article-left-column{
+height: 100%;
+display: grid;
+grid-template-rows: max-content max-content max-content max-content;
+justify-items: start;
+align-items: center;
+gap: 10px;
+overflow: hidden;
+}
+.article-left-column p{
+color: black;
+}
+.div-name{}
+.education{}
+.organization{}
+.article-right-column{
+display: grid;
+grid-template-rows: max-content max-content max-content;
+justify-items: start;
+align-items: center;
+}
+.profile-image-block{
+justify-self: end;
+width: 555px;
+height: 256px;
+display: flex;
+justify-content: center;
+align-items: center;
+border: 3px solid #005AAA;
+border-radius: 50px 5px;
+overflow: hidden;
+}
+.image-block{
+width: 400px;
+height: 242px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-bottom: 3px solid #005AAA;
+border-radius: 50px 5px;
+overflow: hidden;
+}
+.div-img{
+width: 100%;
+height: 100%;
+-webkit-mask-image: url(mask.svg);
+mask-image: url(mask.svg);
+-webkit-mask-size: auto;
+mask-size: auto;
+-webkit-mask-clip: content-box;
+mask-clip: content-box;
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+overflow: hidden;
+}
+.div-img img{
+object-fit: cover;
+width: 100%;
+height: 100%;
+}
+/* Доп информация */
+.dop-info{
+display: grid;
+grid-template-rows:max-content max-content;
+gap: 20px;
+}
+.education p{
+color: black;
+}
+.about-block p{
+color: black;
+}
+.organization p{
+color: black;
+}
+.row-buttons{
+width:100%;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+}
+/* Добавить статью */
+
+/* Статьи */
+.search-section{
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+background: #FFFFFF;
+border: 1px solid #BDCFE4;
+border-radius: 30px;
+}
+.search-block{
+width: 95%;
+}
+.search-block input{
+width: 100%;
+border: none;
+}
+.view-section{
+width:100%;
+}
+.view-grid{
+width:100%;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-auto-flow: dense row;
+row-gap:20px;
+justify-items:center;
+}
+
+/* Профиль */
+.info{}
+.profile-left-column{
+height: 100%;
+display: grid;
+grid-template-rows: max-content max-content max-content;
+justify-items: start;
+align-items: center;
+gap: 10px;
+}
+.div-name{}
+.organization{}
+.profile-right-column{
+display: grid;
+grid-template-rows: max-content max-content max-content;
+justify-items: start;
+align-items: center;
+}

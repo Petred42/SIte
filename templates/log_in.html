@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Вход{% endblock title%}
+
+{% block content %}
+<div class="dialog-section">
+    <div class="enter-section">
+        <div class="enter-block bottom-line">
+            <div class="div-h2">
+                <h2>Вход</h2>
+            </div>
+            <div class="form-block">
+                <div class="div-form">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row-input">
+                            {% for field in form %}
+                            <div class="div-input">
+                                <div class="div-input-lable">
+                                    {{field.label_tag}}
+                                </div>
+                                <div class="div-input-area">
+                                    {{field}}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="button-block">
+                            <div class="button">
+                                <input type="submit" value="Войти">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="div-p">
+                <p>Нет аккаунта?</p>
+            </div>
+            <div class="div-a">
+                <a href="register">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

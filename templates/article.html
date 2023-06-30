@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Статья{% endblock title%}
+{% block content %}
+{% block info %}
+<div class="info">
+    <div class="article-left-column">
+        <div class="div-name">
+            <div class="div-h2">
+                <h2>{{article.title}}</h2>
+            </div>
+        </div>
+        <div class="education">
+            <div class="div-h3">
+                <h3>Автор статьи</h3>
+            </div>
+            <div class="div-p">
+                <p>
+                    <a style="color:black">{{author.first_name}} {{author.last_name}}</a>
+                </p>
+            </div>
+            <div class="div-h3">
+                <h3>Почта</h3>
+            </div>
+            <div class="div-p">
+                <p>
+                    <a style="color:black">{{author.username}}</a>
+                </p>
+            </div>
+        </div>
+        <div class="organization">
+            <div class="div-h3">
+                <h3>Дата публикации</h3>
+            </div>
+            <div class="div-p">
+                <p>{{article.date}}</p>
+            </div>
+        </div>
+        {% if author.id == user.id %}
+        <div class="button-block">
+            <div class="div-a">
+                <a href='/articles/article/{{article.id}}/edit' class="button">Редактировать</a>
+            </div>
+        </div>
+        <div class="button-block">
+            <div class="div-a">
+                <a href='/articles/article/{{article.id}}/delete' class="button">Удалить статью</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="article-right-column">
+        <div class="profile-image-block">
+            <div class="div-img">
+                <img src="{{article.image.url}}">
+            </div>
+        </div>
+        <div class="dop-info">
+            <div class="div-a blue-text">
+                <a href="/articles/article/{{article.id}}/download">Скачать статью</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock info %}
+{% block about %}
+<div class="about-block">
+    <div class="div-h3">
+        <h3>Аннотация</h3>
+    </div>
+    <div class="div-p">
+        <p>{{article.about}}</p>
+    </div>
+</div>
+{% endblock about %}
+{% endblock content%}

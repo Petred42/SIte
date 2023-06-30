@@ -1,0 +1,40 @@
+{% load static %}
+<div class="menu margin-top-bottom">
+        <div class="logo">
+            <a href="/main">
+                <img src="{% static 'image/guap.svg' %}">
+            </a>
+        </div>
+        <div class="nav-block">
+            <div class="div-a">
+                <a href="/profile">Профиль</a>
+            </div>
+            <div class="div-a">
+                <a href="/events">Мероприятия</a>
+            </div>
+            <div class="div-a">
+                <a href="/articles">Публикации</a>
+            </div>
+        </div>
+        <div class="enter-nav">
+            {% if user.is_authenticated %}
+            <div class="enter-img">
+                <a href="/profile">
+                    <img src="{% static 'image/enter-vector.svg' %}">
+                </a>
+            </div>
+            <div class="div-a">
+                    <a href="/log_out">Выход</a>
+            </div>
+            {% else %}
+            <div class="enter-img">
+                <a href="/log_in">
+                    <img src="{% static 'image/enter-vector.svg' %}">
+                </a>
+            </div>
+            <div class="div-a">
+                    <a href="/log_in">Вход</a>
+            </div>
+            {% endif %}
+        </div>
+</div>

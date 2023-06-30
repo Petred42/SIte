@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}{{user.first_name}} {{user.last_name}}{% endblock title%}
+
+{% block content %}
+{% block info %}
+<div class="info">
+    <div class="profile-left-column">
+        <div class="div-name">
+            <div class="div-h2">
+                <h2>{{user.first_name}} {{user.last_name}}</h2>
+            </div>
+        </div>
+        <div class="organization">
+            <div class="div-h3">
+                <h3>Организация</h3>
+            </div>
+            <div class="div-p">
+                <p>{{user.student.organization}}</p>
+            </div>
+        </div>
+        <div class="organization">
+            <div class="div-h3">
+                <h3>О себе</h3>
+            </div>
+            <div class="div-p">
+                <p>{{user.student.about}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="profile-right-column">
+        <div class="profile-image-block">
+            <div class="div-img">
+                <img src="{{ user.student.image.url }}">
+            </div>
+        </div>
+        <div class="organization">
+            <div class="div-p email">
+                <p>Email: {{user.email}}</p>
+            </div>
+            <div class="organization">
+                <p>Номер телефона: {{user.student.phone_number}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock info %}
+<div class="button-block">
+            <div class="div-a">
+                <a href='profile/edit' class="button">Редактировать</a>
+            </div>
+        </div>
+{% block 3-last-conference%}
+<div class="board-card-section margin-top-bottom">
+    <div class="div-header">
+        <div class="div-h2">
+            <h2>{{conference_h2}}</h2>
+        </div>
+        <div class="div-a upper">
+            <a href="/my_events">{{conference_a}}</a>
+        </div>
+    </div>
+    <div class="board margin-top-bottom">
+        {% for event in events %}
+        <div class="card">
+            <div class="image-block">
+                <div class="div-img">
+                    <img src='{{event.image.url}}'>
+                </div>
+            </div>
+            <div class="content">
+                <div class="div-h3">
+                    <h3><a href='/events/event/{{event.id}}/'>{{event.name}}</a></h3>
+                </div>
+                <div class="div-p">
+                    <p>{{event.about}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock 3-last-conference %}
+
+{% block 3-last-article %}
+<div class="board-card-section margin-top-bottom">
+    <div class="div-header">
+        <div class="div-h2">
+            <h2>{{article_h2}}</h2>
+        </div>
+        <div class="div-a upper">
+            <a href="/articles">{{article_a}}</a>
+        </div>
+    </div>
+    <div class="board margin-top-bottom">
+        {% for article in articles %}
+        <div class="card">
+            <div class="image-block">
+                <div class="div-img">
+                    <img src='{{article.image.url}}'>
+                </div>
+            </div>
+            <div class="content">
+                <div class="div-h3">
+                    <h3><a href='/articles/article/{{article.id}}/'>{{article.title}}</a></h3>
+                </div>
+                <div class="div-p">
+                    <p>{{article.about}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock 3-last-article %}
+{% endblock content %}

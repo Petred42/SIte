@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Публикации{% endblock title%}
+
+{% block content %}
+
+{% block search %}
+<div class="search-section">
+    <div class="search-block">
+        <a type="text"> Выберите статью, которую хотите отправить</a>
+    </div>
+</div>
+{% endblock search%}
+
+{% block view %}
+<div class="view-section margin-top-bottom">
+    <div class="view-grid">
+        {% for article in articles %}
+        <div class="card">
+            <div class="image-block">
+                <div class="div-img">
+                    <img src="{{article.image.url}}">
+                </div>
+            </div>
+            <div class="content">
+                <div class="div-h3">
+                        <h3>{{article.title}}</h3>
+                </div>
+              <div class="dop-info">
+                  <div class="div-a">
+                      <a href="take_part/{{article.id}}">Добавить эту статью</a>
+                  </div>
+              </div>
+                <div class="div-p">
+                    <p>{{article.about}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock view %}
+
+{% endblock content %}

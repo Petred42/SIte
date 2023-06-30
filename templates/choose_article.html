@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Статья{% endblock title%}
+{% block content %}
+{% block info %}
+<div class="info">
+    <div class="left-column">
+        <div class="div-name">
+            <div class="div-h2">
+                <h2>{{article.title}}</h2>
+            </div>
+        </div>
+        <div class="education">
+            <div class="div-h3">
+                <h3>Автор статьи</h3>
+            </div>
+            <div class="div-p">
+                <p>
+                    <a href="">{{author}}</a>
+                </p>
+            </div>
+        </div>
+        <div class="organization">
+            <div class="div-h3">
+                <h3>Дата и время публикации</h3>
+            </div>
+            <div class="div-p">
+                <p>{{article.date}}</p>
+            </div>
+        </div>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="button-block">
+            <div class="button">
+                <input type="submit" value="Отправить эту статью">
+            </div>
+        </div>
+      </form>
+    </div>
+    <div class="right-column">
+        <div class="profile-image-block">
+            <div class="div-img">
+                <img src="{{article.image.url}}">
+            </div>
+        </div>
+        <div class="dop-info margin-top-bottom">
+            <div class="div-a blue-text">
+                <a href="">Скачать статью</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock info %}
+{% block about %}
+<div class="about-block">
+    <div class="div-h3">
+        <h3>О статье</h3>
+        <p>{{article.about}}</p>
+    </div>
+</div>
+{% endblock about %}
+{% endblock content%}

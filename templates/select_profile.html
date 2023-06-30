@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+{% block title %}Участники{% endblock title%}
+
+{% block content %}
+{% block search %}
+<div class="search-section">
+    <div class="search-block">
+        <input type="text" name="search-conference" placeholder="Я хочу найти участника">
+    </div>
+</div>
+{% endblock search%}
+<div class="joiners-card-section">
+    {% for user in users %}
+    <div class="card-joiners">
+        <div class="block-image-joiners">
+            <div class="image">
+                <img src="{% static 'image/image.svg' %}">
+            </div>
+        </div>
+        <div class="content">
+            <div class="div-h3">
+                <h3>Заголовок H3</h3>
+            </div>
+            <div class="div-p">
+                <p></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
