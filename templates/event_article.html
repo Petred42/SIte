@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
@@ -7,7 +7,7 @@
 {% block content %}
 {% block info %}
 <div class="info">
-    <div class="left-column">
+    <div class="article-left-column">
         <div class="div-name">
             <div class="div-h2">
                 <h2>{{article.title}}</h2>
@@ -39,24 +39,47 @@
                 <p>{{article.date}}</p>
             </div>
         </div>
-      <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
+        {% if author.id == user.user_id %}
         <div class="button-block">
-            <div class="button">
-                <input type="submit" value="Отправить этот файл">
+            <div class="div-a">
+                <a href='/articles/article/{{article.id}}/edit' class="button">Редактировать</a>
             </div>
         </div>
-      </form>
+        {% endif %}
+        {% if author.id == user.user_id %}
+        <div class="button-block">
+            <div class="div-a">
+                <a href='/articles/article/{{article.id}}/delete' class="button">Удалить статью</a>
+            </div>
+        </div>
+        <div class="button-block">
+            <div class="div-a">
+                <a href='/events/event/{{event.id}}/speakers/{{article.id}}/reject' class="button">Отменить заявку</a>
+            </div>
+        </div>
+        {% endif %}
+        {% if org.id == user.user_id %}
+        <div class="button-block">
+            <div class="div-a">
+                <a href='/events/event/{{event.id}}/speakers/{{article.id}}/approve' class="button">Одобрить заявку</a>
+            </div>
+        </div>
+        <div class="button-block">
+            <div class="div-a">
+                <a href='/events/event/{{event.id}}/speakers/{{article.id}}/reject' class="button">Отклонить заявку</a>
+            </div>
+        </div>
+        {% endif %}
     </div>
-    <div class="right-column">
+    <div class="article-right-column">
         <div class="profile-image-block">
             <div class="div-img">
                 <img src="{{article.image.url}}">
             </div>
         </div>
-        <div class="dop-info margin-top-bottom">
+        <div class="dop-info">
             <div class="div-a blue-text">
-                <a href="">Скачать статью</a>
+                <a href="/articles/article/{{article.id}}/download" class="button">Скачать статью</a>
             </div>
         </div>
     </div>
@@ -65,7 +88,9 @@
 {% block about %}
 <div class="about-block">
     <div class="div-h3">
-        <h3>О статье</h3>
+        <h3>Аннотация</h3>
+    </div>
+    <div class="div-p">
         <p>{{article.about}}</p>
     </div>
 </div>

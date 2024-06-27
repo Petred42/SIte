@@ -30,7 +30,7 @@ class Event(models.Model):  # модель конференции
 class Article(models.Model):  # модель статьи
     title = models.CharField(max_length=100)
     file = models.FileField(upload_to='articles/')
-    about = models.TextField(null=True, blank=True)
+    about = models.TextField(max_length=300, null=True, blank=True)
     date = models.DateField(default=timezone.now())
     image = models.ImageField(upload_to="photos/articles", verbose_name="Фото")
     user = models.ManyToManyField(User, through="Article_User")
@@ -51,3 +51,4 @@ class Event_User(models.Model):  # конференция_пользовател
 class Event_Article(models.Model):  # конференция_статья
     event_id = models.ForeignKey(Event, on_delete=models.CASCADE)
     article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
+    allowed = models.BooleanField(default=False)

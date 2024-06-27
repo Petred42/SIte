@@ -8,16 +8,17 @@
 {% block content %}
 
 {% block search %}
-<div class="search-section">
-    <div class="search-block">
-        <input type="text" name="search-conference" placeholder="Я хочу найти статью">
-    </div>
-</div>
+<!--<div class="search-section">-->
+<!--    <div class="search-block">-->
+<!--        <input type="text" name="search-conference" placeholder="я хочу найти статью">-->
+<!--    </div>-->
+<!--</div>-->
 {% endblock search%}
 
 {% block view %}
 <div class="view-section margin-top-bottom">
     <div class="view-grid">
+        {% if Us == 'org' %}
         {% for article in articles %}
         <div class="card">
             <div class="image-block">
@@ -27,7 +28,7 @@
             </div>
             <div class="content">
                 <div class="div-h3">
-                    <a href='/articles/article/{{article.id}}' style="color:black">
+                    <a href='/events/event/{{event.id}}/speakers/{{ article.id }}' style="color:black">
                         <h3>{{article.title}}</h3>
                     </a>
                 </div>
@@ -38,10 +39,46 @@
                 </div>
                 <div class="div-p">
                     <p>{{article.about}}</p>
+                    {% for al in allowed %}
+                    {% if article.id == al.article_id_id and al.allowed == True %}
+                    <font style="color:#00FF00" size="+1">Одобрено</font>
+                    {% endif %}
+                    {% if article.id == al.article_id_id and al.allowed == False %}
+                    <strong style="color:#FF0000">Не одобрено</strong>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
         {% endfor %}
+
+        {% elif Us == 'us' %}
+
+        {% for all in allowed %}
+        <div class="card">
+            <div class="image-block">
+                <div class="div-img">
+                    <img src="{{all.image.url}}">
+                </div>
+            </div>
+            <div class="content">
+                <div class="div-h3">
+                    <a href='/events/event/{{event.id}}/speakers/{{all.id}}' style="color:black">
+                        <h3>{{all.title}}</h3>
+                    </a>
+                </div>
+                <div class="div-h3">
+                    <a style="color:black">
+                        <h3>{{author.user.username}}</h3>
+                    </a>
+                </div>
+                <div class="div-p">
+                    <p>{{all.about}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% endblock view %}

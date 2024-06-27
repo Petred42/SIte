@@ -13,11 +13,11 @@
                 <h2>Введите новые данные профиля</h2>
             </div>
                 <div class="form-block">
-                <form method="POST">
+                <form enctype="multipart/form-data" method="POST">
                     {% csrf_token %}
                     <div class="form-error">{{ form.non_field_errors }}</div>
                     <fieldset class="form-group">
-          	<legend>Ваш профиль</legend>
+          	            <legend>Ваш профиль</legend>
                     {{ u_form|crispy }}
                     {{ p_form|crispy }}
                     <div class="button-block">

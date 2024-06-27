@@ -28,10 +28,67 @@ def main(request):  # главная страница
 def event_speakers(request, pk):  # страница участников
     event = get_object_or_404(Event, pk=pk)
     articles = Article.objects.filter(event=event)
+    org_1 = get_object_or_404(Event_User, event_id=pk, is_org=True)
+    org = get_object_or_404(User, username=org_1.user_id)
+    if str(org.id) == str(request.user.id):
+        allowed = Event_Article.objects.filter(event_id_id=pk)
+        print(type(org.username), type(request.user))
+        Us = 'org'
+    else:
+        allowed = Article.objects.filter(event=event, event_article__allowed=True)
+        Us = 'us'
+
+    for a in articles:
+        print(a.id)
     context = {
         'articles': articles,
+        'event': event,
+        'allowed': allowed,
+        'Us': Us,
     }
     return render(request, "event_speakers.html", context)
+
+
+def article_speaker(request, pk, art):
+    article = get_object_or_404(Article, pk=art)
+    author_1 = get_object_or_404(Article_User, article_id=art)
+    author = get_object_or_404(User, username=author_1.user_id)
+    user = Student.objects.get(user=request.user)
+    org = User.objects.get(event_user__event_id_id=pk, event_user__is_org="True")
+    event = get_object_or_404(Event, id=pk)
+    allowed = Event_User.objects.filter(event_id_id=pk)
+    context = {
+        'article': article,
+        'author': author,
+        'org': org,
+        'user': user,
+        'event': event,
+        'allowed': allowed,
+    }
+    return render(request, "event_article.html", context)
+
+
+@login_required
+def choose_article(request, pk, art):  # страница выбора статьи для участия
+    event = get_object_or_404(Event, pk=pk)
+    article = get_object_or_404(Article, pk=art)
+    author = get_object_or_404(Article_User, article_id=art)
+    user = get_object_or_404(User, username=author.user_id)
+    if request.method == 'POST':
+        con = Event_Article.objects.filter(event_id=pk, article_id=art)
+        if con.exists():
+            messages.success(request, f'Эта статья уже зарегистрированна. Выберите другую статью')
+            return redirect('/events/event/' + str(pk) + '/take_part')
+        con = Event_Article.objects.create(article_id=article, event_id=event)
+        us = Event_User.objects.create(event_id=event, user_id=request.user, is_org=False)
+        messages.success(request, f'Ваша статья успешно зарегистрирована. Когда организаторы одобрят ее для участия, она появится в списке участников')
+        return redirect('/events/event/' + str(pk))
+    context = {
+        'event': event,
+        'article': article,
+        'author': user,
+    }
+    return render(request, "choose_article.html", context)
 
 
 @login_required
@@ -63,6 +120,39 @@ def register(request):  # страница регистрации
     return render(request, "registration.html", context)
 
 
+def article_reject(request, pk, art):  # удаление статьи
+    article = get_object_or_404(Event_Article, event_id=pk, article_id=art)
+    article_1 = get_object_or_404(Article, pk=art)
+    if request.method == 'POST':
+        article.delete()
+        messages.success(request, f'Выбранная статья больше не находится в списке участвующих.')
+        return redirect('/events/event/' + str(pk) + '/speakers')
+    context = {
+        'con': 'отклонить',
+        'Con': 'Отклонить',
+        'cancel': '/events/event/' + str(pk) + '/speakers/' + str(art),
+        'article': article_1,
+    }
+    return render(request, "article_delete.html", context)
+
+
+def article_approve(request, pk, art):  # одобрение статьи
+    article = get_object_or_404(Event_Article, event_id=pk, article_id=art)
+    article_1 = get_object_or_404(Article, pk=art)
+    if request.method == 'POST':
+        article.allowed = True;
+        article.save()
+        messages.success(request, f'Статья успешно одобрена для участия.')
+        return redirect('/events/event/' + str(pk) + '/speakers')
+    context = {
+        'con': 'одобрить',
+        'Con': 'Одобрить',
+        'cancel': '/events/event/' + str(pk) + '/speakers/' + str(art),
+        'article': article_1,
+    }
+    return render(request, "article_delete.html", context)
+
+
 def article_delete(request, pk):  # удаление статьи
     article = get_object_or_404(Article, pk=pk)
     if request.method == 'POST':
@@ -70,6 +160,9 @@ def article_delete(request, pk):  # удаление статьи
         messages.success(request, f'Ваша статья успешно удалена.')
         return redirect('/articles')
     context = {
+        'con': 'удалить',
+        'Con': 'Удалить',
+        'cancel': '/articles/article/' + str(pk) + '/',
         'article': article,
     }
     return render(request, "article_delete.html", context)
@@ -111,26 +204,6 @@ def take_part(request, pk):  # страница для принятия учат
         'articles': articles,
     }
     return render(request, "take_part.html", context)
-
-
-@login_required
-def choose_article(request, pk, art):  # страница выбора статьи для участия
-    event = get_object_or_404(Event, pk=pk)
-    article = get_object_or_404(Article, pk=art)
-    if request.method == 'POST':
-        con = Event_Article.objects.filter(event_id=pk, article_id=art)
-        if con.exists():
-            messages.success(request, f'Эта статья уже зарегистрированна. Выберите другую статью')
-            return redirect('/events/event/' + str(pk) + '/take_part')
-        con = Event_Article.objects.create(article_id=article, event_id=event)
-        us = Event_User.objects.create(event_id=event, user_id=request.user, is_org=False)
-        messages.success(request, f'Ваша статья успешно зарегистрирована. Вас будут ожидать на мероприятии')
-        return redirect('/events/event/' + str(pk))
-    context = {
-        'event': event,
-        'article': article,
-    }
-    return render(request, "choose_article.html", context)
 
 
 @login_required
@@ -185,7 +258,7 @@ def event_edit(request, pk):  # редактирование события
         form = EventEdit(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Вашe мероприятие успешно обновлена.')
+            messages.success(request, f'Вашe мероприятие успешно обновлено.')
             return HttpResponseRedirect("/events")
     else:
         form = EventEdit(instance=event)
@@ -203,7 +276,7 @@ def event(request, pk):  # страница информации о конфер
         org = Event_User.objects.get(event_id=pk, user_id=request.user, is_org=True)
         context = {
             'event': event,
-            'stud':stud,
+            'stud': stud,
             'orgs': orgs,
             'org': org,
         }
@@ -217,7 +290,7 @@ def event(request, pk):  # страница информации о конфер
 
 
 @login_required
-def add_event(request):   # добавить событие
+def add_event(request):  # добавить событие
     if request.method == 'POST':
         form = EventEdit(request.POST, request.FILES)
         if form.is_valid():
@@ -249,7 +322,7 @@ def events(request):  # список событий
 
 @login_required
 def my_events(request):  # мои события
-    events = Event.objects.filter(user=request.user)
+    events = Event.objects.filter(user=request.user).order_by('id')
     context = {
         'events': events
     }
@@ -294,8 +367,13 @@ def profile(request):  # страница профиля
     article_a = "все статьи"
     article_a += " >"
     articles = Article.objects.filter(user=request.user).order_by('-id')[:3]  # Нужно ограничить до 3 элементов
-    data = {"conference_h2": conference_h2, "conference_a": conference_a, "events": events,
-            "article_h2": article_h2, "article_a": article_a, "articles": articles}
+    data = {
+        "conference_h2": conference_h2,
+        "conference_a": conference_a,
+        "events": events,
+        "article_h2": article_h2,
+        "article_a": article_a,
+        "articles": articles}
     return render(request, "profile.html", context=data)
 
 

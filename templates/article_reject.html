@@ -6,7 +6,7 @@
 {% block title %}Удалить статью{% endblock title%}
 
 {% block content %}
-<h3 class="u-text u-text-default u-text-1">Вы уверены что хотите {{ con }} следующую статью:</h3>
+<h3 class="u-text u-text-default u-text-1">Вы уверены что хотите удалить эту статью из участников?</h3>
 <h4>{{ article.title }}</h4>
 <div class="image-block">
                 <div class="image">
@@ -17,9 +17,9 @@
     {% csrf_token %}
   <div class="button-block">
     <div class="button">
-      <input type="submit" value="{{ Con }}">
+      <input type="submit" value="Отменить">
     </div>
   </div>
 </form>
-<a href="{{ cancel }}" class="u-border-none u-btn u-btn-round u-button-style u-grey-90 u-hover-grey-75 u-radius-50 u-btn-1">Отмена</a>
+<a href="/articles" class="u-border-none u-btn u-btn-round u-button-style u-grey-90 u-hover-grey-75 u-radius-50 u-btn-1">Отмена</a>
 {% endblock content %}

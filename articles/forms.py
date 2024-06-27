@@ -78,10 +78,10 @@ class ArticleEdit(forms.ModelForm):
         model = Article
         fields = ['title', 'file', 'about', 'date', 'image']
         labels = {
-            'title': _('Название Статьи'),
+            'title': _('Название '),
             'date': _('Дата публикации'),
-            'about': _('Аннотация статьи'),
-            'file': _('Файл со статьей'),
+            'about': _('Аннотация '),
+            'file': _('Файл'),
             'image': _('Фотография для статьи'),
         }
         max_length = {
