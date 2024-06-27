@@ -2,7 +2,7 @@
 
 Организаторам мероприятия приходится самим связываться с участниками, использовать сторонние ПО для организации такие как Excel и очень близко общаться с участниками конференции, что будет отнимать очень много времени. Для лучшего представления была разработана диаграмма As-is, которая представлена ниже.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/f7602f44-2400-4b05-93d4-429ddd81278b)
+![image](https://github.com/Petred42/Site/assets/84621065/889d8ab1-d649-4f2b-83c3-a9828759e312)
 
 Основная задача разрабатываемой системы – помощь в организации научных мероприятий, именно с этой задачей, так как остальные сервисы не предполагают подобного функционала. Для этого необходимо, чтобы система решала следующие задачи:
 1)	Организация конференции – пользователь должен иметь возможность создавать, редактировать и удалять объявления о проведении мероприятия;
@@ -11,7 +11,7 @@
 4)	Отказ в участии – организатор должен иметь возможность отказать участнику в презентации своего исследования, если, по его мнению, статья не подходит под тематику конференции.
 Для лучшего понимания разрабатываемой системы была построена диаграмма to-be:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/224814d5-a7bc-43b2-b2e3-09f73ca17dce)
+![image](https://github.com/Petred42/Site/assets/84621065/7c9fbab1-ab31-436c-b559-bb17205629e6)
 
 Для разработки приложения использовались следующие технологии:
 1) Python 3.11.0
@@ -23,16 +23,17 @@
 
 Диаграмма прецедентов:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/b153ead3-5149-48c5-ad89-ac56c0b6e23a)
+![image](https://github.com/Petred42/Site/assets/84621065/9e4e34ce-064b-418a-8b99-e8737c9f7e52)
 
 Схема разработанной базы данных:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/2f98fe16-c5cb-4127-ab92-18798b5c3bb0)
+![image](https://github.com/Petred42/Site/assets/84621065/0cdf1e22-a428-4144-b1bb-951baa2d8e48)
 
 Руководство пользователя:
 На каждой странице, сверху, есть меню сайта представленное в виде 5 элементов:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/d761970a-9b13-4db9-b615-3a2d39444c1c)
+![image](https://github.com/Petred42/Site/assets/84621065/1e82d4f8-c0ac-4166-9fe7-3554e1d4ebfd)
+
 1)	Логотип сайта, который переносит на главную страницу
 2)	Ссылка на профиль пользователя, которая перенесет на страницу авторизации, если пользователь не авторизован
 3)	Ссылка на страницу со всеми мероприятиями
@@ -41,108 +42,108 @@
 
 Пользователь начинает работу на странице авторизации, где ему предлагается ввести имя пользователя и пароль или зарегистрироваться.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/21d55980-eb10-4b0b-aac7-7a717f600216)
+![image](https://github.com/Petred42/Site/assets/84621065/b4a4474b-4fa3-4b0c-9375-ec4affe46970)
 
 При переходе на страницу регистрации, пользователю откроется форма, куда нужно будет ввести основные данные для создания профиля в системе.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/4f355f2c-36cf-4025-b971-7c83b5676a88)
+![image](https://github.com/Petred42/Site/assets/84621065/3729471a-8cd9-4696-90f1-89205ad371fc)
 
 После успешной регистрации пользователя перенесет, на страницу авторизации, где он сможет ввести логин и пароль для продолжения работы.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/da392658-214b-4181-a50d-b8f5787d32f7)
+![image](https://github.com/Petred42/Site/assets/84621065/51205fd5-9357-4e42-8368-da703f2b7d2b)
 
 Перед продолжением работы и получением полного доступа к функционалу приложения пользователю нужно будет заполнить более подробную информацию о себе. Для этого ему откроется форма редактирования профиля
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/8c7a6e66-56c3-4273-bc65-725789abe958)
+![image](https://github.com/Petred42/Site/assets/84621065/0de59eb3-5acb-4e49-a0b5-c7b3cc5981d4)
 
 Страница профиля пользователя:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/3c33655b-a498-4b59-baab-67dea2b7c8b3)
+![image](https://github.com/Petred42/Site/assets/84621065/8f4a9aed-9e67-4b55-9f00-81e36bc47863)
 
 Для ознакомления со списком зарегистрированных в приложении мероприятий, нужно перейти на страницу мероприятий.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/e7d0068a-fda5-4232-a8ce-04bfd1b0bb08)
+![image](https://github.com/Petred42/Site/assets/84621065/0ae8796d-031d-4479-901c-c347018693d3)
 
 
 Чтобы добавить информацию о собственном мероприятии, нужно нажать на кнопку «Добавить мероприятие». Это откроет форму добавления нового мероприятия.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/0af4db8a-3d2c-4515-8379-b855ccf0fe13)
+![image](https://github.com/Petred42/Site/assets/84621065/649d189e-f931-4087-944a-a200b6650329)
 
 Как видно на скрине, мероприятие успешно добавлено.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/65576ed9-44b8-45e5-8d9d-1324e5580d1e)
+![image](https://github.com/Petred42/Site/assets/84621065/2e2f7376-3f60-4dd8-b136-11c66e97a641)
 
 Чтобы узнать более подробную информацию о мероприятии нужно выбрать его, нажав на название мероприятия.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/6e3bf154-ac3d-40fd-b23a-5b9e9bc8abb0)
+![image](https://github.com/Petred42/Site/assets/84621065/70c0356f-dd35-449e-994f-4d849fefd21d)
 
 На странице мероприятия, если пользователь является организатором, то он может отредактировать мероприятие или удалить его.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/e69befdd-ef69-43c0-bc0d-e0392d8c2deb)
+![image](https://github.com/Petred42/Site/assets/84621065/2c1a9794-9820-4c99-a669-6ff306445394)
 
 Форма редактирования мероприятия:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/e4e54fe7-78a7-4bea-98c6-37cb6d5cd11d)
+![image](https://github.com/Petred42/Site/assets/84621065/311bf4b4-c818-4434-b2b3-9c6c90d2c6f0)
 
 Страница удаления мероприятия
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/f0ff8a2d-dc23-4520-891d-0d6aedf4bd20)
+![image](https://github.com/Petred42/Site/assets/84621065/85f58540-a77e-424b-9a6b-1533c621edeb)
 
 Также можно подать заявку, добавив свою публикацию, статью или презентацию в список участников на проверку организатором. Но сперва нужно будет загрузить эту статью на сайт. Для этого нужно перейти на страницу публикаций и добавить файл, заполнив форму публикации.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/d495ff54-218f-4fd0-8580-abdf78269b26)
+![image](https://github.com/Petred42/Site/assets/84621065/8abd8ae7-2492-4db1-90fc-efeb2ae6ee30)
 
 Список публикаций пользователя:
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/bc845b9e-512e-492d-86af-07d2be055c31)
+![image](https://github.com/Petred42/Site/assets/84621065/d6107721-0f55-407d-a5f7-2ad1b2940aef)
 
 В любой момент пользователь может отредактировать информацию о статье или удалить ее аналогично мероприятиям. А также есть возможность скачать файл, для просмотра его, если необходимо.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/5f1ce5b9-6b30-4c0c-9f4b-18c2ebcb9c45)
+![image](https://github.com/Petred42/Site/assets/84621065/a3c38ab3-64b4-4652-8f6f-4360bc2c3c89)
 
 Теперь можно нажать на кнопку «Подать заявку», на странице мероприятия и, выбрав статью, отправить ее на оценку организатору. 
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/82ef559f-898d-482a-82f0-72b1a53726f8)
+![image](https://github.com/Petred42/Site/assets/84621065/21268745-73c0-4809-80ed-8e648c2c722e)
 
 Выбор статьи для участия
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/e1ddb3fd-3720-4c24-99b1-c56d12a04814)
+![image](https://github.com/Petred42/Site/assets/84621065/b3e25be6-4ba3-465e-bdb8-2457bccbc3d3)
 
 Подтверждение выбора
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/2581fbef-2da7-4328-b8e7-81dc114c0e4e)
+![image](https://github.com/Petred42/Site/assets/84621065/6f39ce09-e740-4a41-81f0-9dead5ac1cb6)
 
 Теперь нужно дождаться, когда организатор мероприятия проверит заявку, и если он сочтет ее подходящей, то отправленная публикация появится в списке участников.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/5a9559b8-0556-4ba1-b33f-fa99b89a7cd9)
+![image](https://github.com/Petred42/Site/assets/84621065/23289bfe-705e-44d1-ba98-923efdcdcfe5)
 
 Чтобы проверить заявку, организатору нужно выбрать статью для проверки, скачать ее, и принять решение, одобрить или нет.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/5842f3c8-8e27-4da2-ac01-6bdad861880f)
+![image](https://github.com/Petred42/Site/assets/84621065/455b5537-be33-40af-8126-e815f4e6d6ed)
 
 Одобрение заявки
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/1a87825e-aad6-472f-8ec0-78f31d658e8d)
+![image](https://github.com/Petred42/Site/assets/84621065/06510213-a283-421c-a7f0-3d88abb7688f)
 
 Статус статьи сменился на «одобрено»
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/58a923ce-3bca-440d-80ed-9787ec5f518b)
+![image](https://github.com/Petred42/Site/assets/84621065/576eac4a-9819-407b-bf67-19ac4f2da37e)
 
 Организатор может также отказать в участии, и тогда заявка будет удалена из списка участников.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/967bac2c-d8df-46a2-943c-94e58a96ffac)
+![image](https://github.com/Petred42/Site/assets/84621065/70cf2b2b-1814-43b5-97a5-0def06b9dd5f)
 
 Подтверждение решения
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/a7352ba4-1755-40be-964d-fffb8bc62715)
+![image](https://github.com/Petred42/Site/assets/84621065/c84ee9bc-b4a2-4596-86ef-bbfeabbb9c15)
 
 Список участников
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/86da1468-d19a-4565-b287-0170deaaebfc)
+![image](https://github.com/Petred42/Site/assets/84621065/6e9298eb-95d8-41b8-a53b-6d10a9b57585)
 
 В любой момент пользователь может выйти из учетной записи, нажав на кнопку выхода в правом верхнем углу.
 
-![image](https://github.com/Petred42/conferences_management/assets/84621065/f10147e8-b362-4b57-9391-7f39322b9910)
+![image](https://github.com/Petred42/Site/assets/84621065/f8939cd0-bdaa-4b9c-9e68-4d30be6b2cf8)
 
 В результате было разработано веб-приложение, которое облегчает организацию и планирование различных мероприятий, делая процесс более удобным и эффективным.
 Пользователь может регистрироваться, входить в систему и выходить из нее, также он имеет возможность добавлять, редактировать и удалять статьи и мероприятия, если имеет на это право. Организатор имеет возможность сообщить о своем мероприятии со всей необходимой информацией, а желающие поучаствовать могут отправить свои заявки для участия, которые будут приняты или отвергнуты организаторами.
